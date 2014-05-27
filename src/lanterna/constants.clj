@@ -3,49 +3,48 @@
            com.googlecode.lanterna.TerminalFacade
            com.googlecode.lanterna.screen.Screen
            com.googlecode.lanterna.terminal.Terminal
-           com.googlecode.lanterna.screen.ScreenCharacterStyle
            com.googlecode.lanterna.terminal.swing.TerminalPalette
-           com.googlecode.lanterna.input.Key))
+           com.googlecode.lanterna.input.KeyType))
 
 
 (def charsets {:utf-8 (Charset/forName "UTF-8")})
 
 (def colors
-  {:black   com.googlecode.lanterna.terminal.Terminal$Color/BLACK
-   :white   com.googlecode.lanterna.terminal.Terminal$Color/WHITE
-   :red     com.googlecode.lanterna.terminal.Terminal$Color/RED
-   :green   com.googlecode.lanterna.terminal.Terminal$Color/GREEN
-   :blue    com.googlecode.lanterna.terminal.Terminal$Color/BLUE
-   :cyan    com.googlecode.lanterna.terminal.Terminal$Color/CYAN
-   :magenta com.googlecode.lanterna.terminal.Terminal$Color/MAGENTA
-   :yellow  com.googlecode.lanterna.terminal.Terminal$Color/YELLOW
-   :default com.googlecode.lanterna.terminal.Terminal$Color/DEFAULT})
+  {:black   com.googlecode.lanterna.terminal.Terminal$ANSIColor/BLACK
+   :white   com.googlecode.lanterna.terminal.Terminal$ANSIColor/WHITE
+   :red     com.googlecode.lanterna.terminal.Terminal$ANSIColor/RED
+   :green   com.googlecode.lanterna.terminal.Terminal$ANSIColor/GREEN
+   :blue    com.googlecode.lanterna.terminal.Terminal$ANSIColor/BLUE
+   :cyan    com.googlecode.lanterna.terminal.Terminal$ANSIColor/CYAN
+   :magenta com.googlecode.lanterna.terminal.Terminal$ANSIColor/MAGENTA
+   :yellow  com.googlecode.lanterna.terminal.Terminal$ANSIColor/YELLOW
+   :default com.googlecode.lanterna.terminal.Terminal$ANSIColor/DEFAULT})
 
 (def styles
-  {:bold ScreenCharacterStyle/Bold
-   :reverse ScreenCharacterStyle/Reverse
-   :underline ScreenCharacterStyle/Underline
-   :blinking ScreenCharacterStyle/Blinking})
+  {:bold com.googlecode.lanterna.terminal.Terminal$SGR/BOLD
+   :reverse com.googlecode.lanterna.terminal.Terminal$SGR/REVERSE
+   :underline com.googlecode.lanterna.terminal.Terminal$SGR/UNDERLINE
+   :blinking com.googlecode.lanterna.terminal.Terminal$SGR/BLINK})
 
 (def key-codes
-  {com.googlecode.lanterna.input.Key$Kind/NormalKey :normal
-   com.googlecode.lanterna.input.Key$Kind/Escape :escape
-   com.googlecode.lanterna.input.Key$Kind/Backspace :backspace
-   com.googlecode.lanterna.input.Key$Kind/ArrowLeft :left
-   com.googlecode.lanterna.input.Key$Kind/ArrowRight :right
-   com.googlecode.lanterna.input.Key$Kind/ArrowUp :up
-   com.googlecode.lanterna.input.Key$Kind/ArrowDown :down
-   com.googlecode.lanterna.input.Key$Kind/Insert :insert
-   com.googlecode.lanterna.input.Key$Kind/Delete :delete
-   com.googlecode.lanterna.input.Key$Kind/Home :home
-   com.googlecode.lanterna.input.Key$Kind/End :end
-   com.googlecode.lanterna.input.Key$Kind/PageUp :page-up
-   com.googlecode.lanterna.input.Key$Kind/PageDown :page-down
-   com.googlecode.lanterna.input.Key$Kind/Tab :tab
-   com.googlecode.lanterna.input.Key$Kind/ReverseTab :reverse-tab
-   com.googlecode.lanterna.input.Key$Kind/Enter :enter
-   com.googlecode.lanterna.input.Key$Kind/Unknown :unknown
-   com.googlecode.lanterna.input.Key$Kind/CursorLocation :cursor-location})
+  {com.googlecode.lanterna.input.KeyType/Character :normal
+   com.googlecode.lanterna.input.KeyType/Escape :escape
+   com.googlecode.lanterna.input.KeyType/Backspace :backspace
+   com.googlecode.lanterna.input.KeyType/ArrowLeft :left
+   com.googlecode.lanterna.input.KeyType/ArrowRight :right
+   com.googlecode.lanterna.input.KeyType/ArrowUp :up
+   com.googlecode.lanterna.input.KeyType/ArrowDown :down
+   com.googlecode.lanterna.input.KeyType/Insert :insert
+   com.googlecode.lanterna.input.KeyType/Delete :delete
+   com.googlecode.lanterna.input.KeyType/Home :home
+   com.googlecode.lanterna.input.KeyType/End :end
+   com.googlecode.lanterna.input.KeyType/PageUp :page-up
+   com.googlecode.lanterna.input.KeyType/PageDown :page-down
+   com.googlecode.lanterna.input.KeyType/Tab :tab
+   com.googlecode.lanterna.input.KeyType/ReverseTab :reverse-tab
+   com.googlecode.lanterna.input.KeyType/Enter :enter
+   com.googlecode.lanterna.input.KeyType/Unknown :unknown
+   com.googlecode.lanterna.input.KeyType/CursorLocation :cursor-location})
 
 
 (def palettes
@@ -57,16 +56,16 @@
    :putty      TerminalPalette/XTERM})
 
 (def enter-styles
-  {:bold com.googlecode.lanterna.terminal.Terminal$SGR/ENTER_BOLD
-   :reverse com.googlecode.lanterna.terminal.Terminal$SGR/ENTER_REVERSE
-   :blinking com.googlecode.lanterna.terminal.Terminal$SGR/ENTER_BLINK
-   :underline com.googlecode.lanterna.terminal.Terminal$SGR/ENTER_UNDERLINE})
+  {:bold com.googlecode.lanterna.terminal.Terminal$SGR/BOLD
+   :reverse com.googlecode.lanterna.terminal.Terminal$SGR/REVERSE
+   :blinking com.googlecode.lanterna.terminal.Terminal$SGR/BLINK
+   :underline com.googlecode.lanterna.terminal.Terminal$SGR/UNDERLINE})
 
-(def exit-styles
-  {:bold com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_BOLD
-   :reverse com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_REVERSE
-   :blinking com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_BLINK
-   :underline com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_UNDERLINE})
+;; (def exit-styles
+;;   {:bold com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_BOLD
+;;    :reverse com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_REVERSE
+;;    :blinking com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_BLINK
+;;    :underline com.googlecode.lanterna.terminal.Terminal$SGR/EXIT_UNDERLINE})
 
-(def reset-style
-  com.googlecode.lanterna.terminal.Terminal$SGR/RESET_ALL)
+;; (def reset-style
+;;   com.googlecode.lanterna.terminal.Terminal$SGR/RESET_ALL)

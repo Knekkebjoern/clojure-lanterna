@@ -22,8 +22,8 @@
 
   "
   [^Terminal terminal listener-fn]
-  (let [listener (reify com.googlecode.lanterna.terminal.Terminal$ResizeListener
-                   (onResized [this newSize]
+  (let [listener (reify com.googlecode.lanterna.terminal.ResizeListener
+                   (onResized [this terminal newSize]
                      (listener-fn (.getColumns newSize)
                                   (.getRows newSize))))]
     (.addResizeListener terminal listener)
@@ -55,7 +55,10 @@
         appearance (new TerminalAppearance
                         (new Font font Font/PLAIN font-size)
                         (new Font font Font/BOLD font-size)
-                        (c/palettes palette) true)]
+                        (c/palettes palette) true true 
+			(new Font font Font/PLAIN font-size)
+			(new Font font Font/PLAIN font-size)
+)]
     (new SwingTerminal appearance cols rows)))
 
 (defn get-terminal
@@ -209,15 +212,20 @@
   [^Terminal terminal style]
   (.applySGR terminal (c/enter-styles style)))
 
+;(defn remove-style
+;  "Borked.  Don't use this."
+;  [^Terminal terminal style]
+;  (.applySGR terminal (c/exit-styles style)))
+
 (defn remove-style
   "Borked.  Don't use this."
   [^Terminal terminal style]
-  (.applySGR terminal (c/exit-styles style)))
+  (.disableSGR terminal style))
 
 (defn reset-styles
   "Borked.  Don't use this."
   [^Terminal terminal]
-  (.applySGR terminal c/reset-style))
+  (.resetAllSGR terminal))
 
 
 (defn get-key
